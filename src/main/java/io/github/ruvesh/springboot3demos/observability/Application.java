@@ -33,13 +33,13 @@ public class Application {
 	 *     		spring-boot-starter-aop
 	 *     	</a>
 	 */
-	@Bean
-	@Observed(name = "post.load-cache", contextualName = "post.load-cache")
-	CommandLineRunner commandLineRunner(JsonPlaceholderService jsonPlaceholderService){
-		return args -> {
-			List<Post> posts = jsonPlaceholderService.findAll();
-			log.info("Posts {}", posts.size());
-		};
-	}
+//	@Bean
+//	@Observed(name = "post.load-cache", contextualName = "post.load-cache")
+//	CommandLineRunner commandLineRunner(JsonPlaceholderService jsonPlaceholderService){
+//		return args -> {
+//			List<Post> posts = jsonPlaceholderService.findAll();
+//			log.info("Posts {}", posts.size());
+//		};
+//	}
 
 }
