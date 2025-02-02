@@ -1,0 +1,7 @@
+Service names:
+use 'spring.application.name' in application.properties to set the name, possible derive it automatically
+
+ReceiverContext.remoteServiceName can be set to indicate target
+
+Question
+Du we use producer/consumer or sender/receiver

@@ -1,5 +1,6 @@
 package io.github.ruvesh.springboot3demos.observability.hello.observability;
 
+import io.github.ruvesh.springboot3demos.observability.hello.queue.QueueMessage;
 import io.micrometer.observation.transport.Kind;
 import io.micrometer.observation.transport.ReceiverContext;
 

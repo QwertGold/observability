@@ -1,5 +1,7 @@
 package io.github.ruvesh.springboot3demos.observability.hello.controller;
 
+import io.github.ruvesh.springboot3demos.observability.hello.queue.QueueMessage;
+import io.github.ruvesh.springboot3demos.observability.hello.queue.MessageSender;
 import io.micrometer.common.KeyValues;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @Autowired
+    private MessageSender messageSender;
+
+    @Autowired
     private ObservationRegistry registry;
 
     @GetMapping("")
@@ -19,7 +24,7 @@ public class HelloController {
         return "Hello World!";
     }
 
-    @GetMapping("/di/{id}")
+    @GetMapping("/id/{id}")
     public String helloWorldId(@PathVariable String id){
         return "Hello World! - id: " + id;
     }
@@ -52,12 +57,8 @@ public class HelloController {
     @GetMapping("/message")
     String message(){
 
-
-        Thread.ofPlatform().start(() -> {
-
-
-        });
-
+        QueueMessage message = QueueMessage.next();
+        messageSender.send(message);
 
         return "Message sent";
     }
